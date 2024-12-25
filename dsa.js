@@ -541,3 +541,33 @@ function secondMostRepeatedCharacter(str) {
     return acc;
   }
   
+
+  
+const temp = (arr) => {
+  return arr.reduce((acc, { name, count }) => {
+    if (acc[name]) {
+      acc[name][count] = acc[name][count] + count;
+    } else {
+      acc[name] = { name, count }
+    }
+    // acc.push(item);
+    return acc;
+  }, []);
+}
+
+console.log(temp(input));
+
+const aggregateCounts = (arr) => {
+  return Object.values(
+    arr.reduce((acc, { name, count }) => {
+      if (acc[name]) {
+        acc[name].count += count;
+      } else {
+        acc[name] = { name, count };
+      }
+      return acc;
+    }, [])
+  )
+};
+
+console.log(aggregateCounts(input));
